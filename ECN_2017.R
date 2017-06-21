@@ -154,3 +154,4 @@ predict(m8,5)
 #Teste de Kolmogorov Smirnov para aderencia da T, em que shape é aproximação
 #dos gl.
 
+# arrumar erro do pacote.
