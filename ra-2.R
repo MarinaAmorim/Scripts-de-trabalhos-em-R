@@ -34,9 +34,7 @@ server <- function(input, output, session) {
     updateSelectInput(session = session, inputId = "resp", choices = variaveis)
     
     y <- input$resp
-    yf <- as.data.frame(input$resp)
-    yn <- names(yf)
-    dados2 <- dados[,-(!(colnames(dados) %in% yn))]
+    dados2 <- dados[,-(!(colnames(dados) %in% y))]
     variaveis2 <- names(dados2)	
     updateCheckboxGroupInput(session = session, inputId = "exp", choices = variaveis2)
   })
