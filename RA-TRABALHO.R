@@ -15,9 +15,8 @@ require(shiny)
       fileInput("dados","Escolha um arquivo .txt",multiple = FALSE,accept = ".txt",buttonLabel = "Ler"),
       tags$hr(),
       checkboxInput("header", "Arquivo com título", TRUE),
-      selectInput('resp', "Variável Resposta:", 
-                  choices = ""),
-      selectInput('exp', "Variáveis Explicativas:", choices = "")
+      selectInput('resp', "Variável Resposta:", choices = ""),
+      checkboxGroupInput("exp", "Variável Explicativa" )
     ),
     mainPanel(
       tableOutput("results")
@@ -35,7 +34,8 @@ require(shiny)
       y <- input$resp
       dados2 <- dados[,-input$resp]
       variaveis2 <- names(dados2)
-      updateSelectInput(session = session, inputId = "exp", choices = variaveis2, size = ncol(dados2))
+      choiceValues = names(dados2)
+      updateSelectInput(session = session, inputId = "exp", choices = variaveis2)
     })
   }
   shinyApp(ui = ui, server = server)
