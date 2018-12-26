@@ -31,12 +31,12 @@ ibov<-ibov[2:n]
 ts.plot(dolar)
 
 acf(dolar)
-pacf(dolar) #Parece nao haver correlação na média.
+pacf(dolar) #Parece nao haver correlaÃ§Ã£o na mÃ©dia.
 
 acf(dolar^2)
 pacf(dolar^2)
 
-kurtosis(dolar) #Não deve ser normal. 
+kurtosis(dolar) #NÃ£o deve ser normal. 
 summary(dolar)
 
 adf.test(dolar)
@@ -45,12 +45,12 @@ adf.test(dolar)
 ts.plot(euro)
 
 acf(euro)
-pacf(euro) #Parece nao haver correlação na média.
+pacf(euro) #Parece nao haver correlaÃ§Ã£o na mÃ©dia.
 
 acf(euro^2)
 pacf(euro^2)
 
-kurtosis(euro) #Não deve ser normal. 
+kurtosis(euro) #NÃ£o deve ser normal. 
 summary(euro)
 
 adf.test(euro)
@@ -59,7 +59,7 @@ adf.test(euro)
 ts.plot(ibov)
 
 acf(ibov)
-pacf(ibov) #Parece nao haver correlação na média.
+pacf(ibov) #Parece nao haver correlaÃ§Ã£o na mÃ©dia.
 
 acf(ibov^2)
 pacf(ibov^2)
@@ -73,12 +73,12 @@ pp.test(ibov)
 ############################
 
 #MODELAGEM
-#com distribuição Normal
+#com distribuiÃ§Ã£o Normal
 
 #Dolar
 m1<-auto.arima(dolar)
 m1
-#Não precisa de modelar a media.
+#NÃ£o precisa de modelar a media.
 
 m2<-garchFit(dolar~garch(1,1))
 summary(m2)
@@ -120,7 +120,7 @@ plot(m6)
 #1.125236 1.136559 1.125228 1.129396 
 
 ##################
-#Ajustes com distribuição T
+#Ajustes com distribuiÃ§Ã£o T
 
 #Dolar
 m7<-garchFit(dolar~garch(1,1),include.mean = FALSE,cond.dist = "std")
@@ -151,7 +151,7 @@ plot(m8)
 predict(m8,5)
 
 
-#Teste de Kolmogorov Smirnov para aderencia da T, em que shape é aproximação
+#Teste de Kolmogorov Smirnov para aderencia da T, em que shape Ã© aproximaÃ§Ã£o
 #dos gl.
 
 # arrumar erro do pacote.
