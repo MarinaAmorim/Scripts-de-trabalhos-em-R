@@ -1,24 +1,24 @@
 #####################################################
-# TRABALHO PR¡TICO
+# TRABALHO PR√ÅTICO
 #####################################################
 
-##PACOTES NECESS√ÅRIOS
-# Para instalar o pacote INLA √© necess√°rio usar o comando abaixo
+##PACOTES NECESS√É¬ÅRIOS
+# Para instalar o pacote INLA √É¬© necess√É¬°rio usar o comando abaixo
 source("http://www.math.ntnu.no/inla/givemeINLA.R")
 require(INLA)
 require(shiny)
 
 
 ui <- fluidPage(
-  headerPanel("TRABALHO PR¡TICO - R AVAN«ADO"),
+  headerPanel("TRABALHO PR√ÅTICO - R AVAN√áADO"),
   sidebarPanel(
-    selectInput("separador","Como as colunas do seu arquivo s„o separadas?", choices = c("tab","espaÁo",",",";"), selected = "tab"),
+    selectInput("separador","Como as colunas do seu arquivo s√£o separadas?", choices = c("tab","espa√ßo",",",";"), selected = "tab"),
     fileInput("dados","Escolha um arquivo .txt",multiple = FALSE,accept = ".txt",buttonLabel = "Ler"),
     tags$hr(),
-    checkboxInput("header", "Arquivo com tÌtulo", TRUE),    
+    checkboxInput("header", "Arquivo com t√≠tulo", TRUE),    
     uiOutput(outputId = "varResp"),
     uiOutput(outputId = "varExp"),
-    actionButton("modelar", "Gerar saÌdas")
+    actionButton("modelar", "Gerar sa√≠das")
   ),
   mainPanel(
     tabsetPanel(
@@ -29,7 +29,7 @@ ui <- fluidPage(
       tabPanel("Valores Ajustados",
                verbatimTextOutput("fitted")
       ),
-      tabPanel("Gr·fico de PIT",
+      tabPanel("Gr√°fico de PIT",
                plotOutput("pit")
       )
     )
@@ -41,7 +41,7 @@ server <- function(input, output, session) {
   loadData <- reactive({
     if(input$separador == "tab")
       sep = "\t"
-    else if (input$separador == "espaÁo")
+    else if (input$separador == "espa√ßo")
       sep = ""
     else 
       sep = input$separador
@@ -54,7 +54,7 @@ server <- function(input, output, session) {
   output$varResp <- renderUI({
     dados <- loadData()
     variaveis <- names(dados)
-    selectInput('resp', "Vari·vel Resposta:", choices = variaveis)
+    selectInput('resp', "Vari√°vel Resposta:", choices = variaveis)
   })  
   
   output$varExp <- renderUI({
@@ -64,7 +64,7 @@ server <- function(input, output, session) {
     y <- input$resp
     y_index <- which(names(dados) == y)
     variaveis2 <- names(dados)[-y_index] 
-    checkboxGroupInput('exp', "Vari·veis Explicativas:", choices = variaveis2)
+    checkboxGroupInput('exp', "Vari√°veis Explicativas:", choices = variaveis2)
   })
   observeEvent( input$modelar, {
     dados <- loadData()
