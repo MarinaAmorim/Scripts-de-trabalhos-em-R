@@ -52,7 +52,7 @@ fit5<-coxph(Surv(TEMPOACOMP,METASTASE)~factor(CATBRESLOW), data=dados,
 summary(fit5)
 
 
-# ulceração
+# ulceraÃ§Ã£o
 fit6<-coxph(Surv(TEMPOACOMP,METASTASE)~factor(ULCERHE), data=dados,
             method="breslow")
 summary(fit6)
